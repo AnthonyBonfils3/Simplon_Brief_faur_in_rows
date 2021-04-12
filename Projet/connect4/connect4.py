@@ -298,7 +298,7 @@ def main():
             question = input("Type of IA: random, Q_learning, heuristics? ")
 
     strategy     = question    ## Q_learning
-    mode         = 1
+    mode         = 4
 
     ## Interface 
 

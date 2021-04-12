@@ -54,7 +54,7 @@ class Board:
                             respectively n_rows 
             -------------         
         """
-        columns  = np.array([i for i in range(1, 8)])
-        indices  = np.array([i for i in range(1, 7)])
+        columns  = np.array([i for i in range(1, self.n_columns+1)])
+        indices  = np.array([i for i in range(1, self.n_rows+1)])
         board_df = pd.DataFrame(self.grid, columns=columns, index=indices)
         print(board_df)

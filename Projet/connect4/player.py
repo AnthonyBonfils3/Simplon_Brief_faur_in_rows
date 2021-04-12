@@ -86,7 +86,19 @@ class Ia(Player):
         self.mode     = mode
         if self.strategy=='Q_learning':
             if self.mode==1:
-                filepath = Qlearning_model_path + 'P4_model_train_rand_2000_step.h5'
+                filepath = Qlearning_model_path + 'model_test.h5' # 'P4_model_train_rand_2000_step.h5'
+
+            elif self.mode==2:
+                filepath = Qlearning_model_path + 'model_qlearning195.h5' # 'model_qlearning100.h5'
+                
+            elif self.mode==3:
+                filepath = Qlearning_model_path + 'model_qlearning500.h5' ## 'model_qlearning1.h5'
+
+            elif self.mode==4:
+                filepath = Qlearning_model_path + 'model_CNNqlearning40.h5'
+
+            else:
+                print(f"Error : strategy {self.strategy} with mode {self.mode} is not available yet.")
             
             self.model = tf.keras.models.load_model(filepath, custom_objects=None, compile=True, options=None)
         if  (self.strategy=='random'):
@@ -114,11 +126,22 @@ class Ia(Player):
                 current_state_flat = self.board.grid.reshape(1,-1)
                 column = np.argmax(self.model.predict(current_state_flat)[0])
                 print("Qlearning model choice of column", column)
-            if (self.mode==2):
-                print(f"Error : strategy {self.strategy} with mode {self.mode} is not available yet.")
 
-            if (self.mode==3):
-                print(f"Error : strategy {self.strategy} with mode {self.mode} is not available yet.")
+            elif (self.mode==2):
+                current_state_flat = self.board.grid.reshape(1,-1)
+                column = np.argmax(self.model.predict(current_state_flat)[0])
+                print("Qlearning model choice of column", column)
+
+            elif (self.mode==3):
+                current_state_flat = self.board.grid.reshape(1,-1)
+                column = np.argmax(self.model.predict(current_state_flat)[0])
+                print("Qlearning model choice of column", column)
+
+            elif (self.mode==4):
+                current_state_reshape = np.reshape(self.board.grid, (1, self.board.n_rows, self.board.n_columns, 1))
+                column = np.argmax(self.model.predict(current_state_reshape)[0])
+                print("Qlearning model choice of column", column)
+
 
             else:
                 print(f"Error : strategy {self.strategy} with mode {self.mode} is not available yet.")
