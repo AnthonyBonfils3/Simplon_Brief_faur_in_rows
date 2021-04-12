@@ -152,13 +152,6 @@ class Can(tk.Canvas):
 
 
 
-# #Une fonction très simpliste pour l'exemple
-# def print_name(event, entree):
-#     print(entree.get())
-
-
-
-
 #####################################################################
 #######################                  ############################
 #######################       MAIN       ############################
@@ -218,8 +211,8 @@ def main():
     # print(val)
 
     def get_n_cols():
-    res = entree_n_cols.get()
-    print(res)
+        res = entree_n_cols.get()
+        print(res)
     
     btn = tk.Button(window, height=1, width=10, text="Ok", command=get_n_cols).grid(row=0, column=3, columnspan=1)
     
